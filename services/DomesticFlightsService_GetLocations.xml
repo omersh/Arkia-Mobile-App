@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceDescription catalog="WSDL" id="DomesticFlightsService_GetLocations" adapter="soap" useNsPrefix="input">
+    <Name>GetLocations</Name>
+    <Description></Description>
+    <Schemas>
+        <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      
+      <s:element name="GetSearchResults">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="oracleSession" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="cacheVariant" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="depCityCode" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="arrCityCode" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="depStationCode" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="arrStationCode" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="searchDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="minDateTime" nillable="true" type="s:dateTime"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchResultsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetSearchResultsResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BaseOracleResult">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="ReturnCode" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ReturnMessage" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CloseProductResultBase">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseOracleResult">
+            <s:sequence>
+              <s:element maxOccurs="1" minOccurs="0" name="HashQuote" type="s:string"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CloseProductDomFlightResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CloseProductResultBase">
+            <s:sequence>
+              <s:element maxOccurs="1" minOccurs="0" name="FlightCpp">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema"/>
+                    <s:any/>
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DomesticFlightsPagingResults">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseOracleResult">
+            <s:sequence>
+              <s:element maxOccurs="1" minOccurs="0" name="Flights">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema"/>
+                    <s:any/>
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element maxOccurs="1" minOccurs="1" name="SpecialFare" nillable="true" type="s:boolean"/>
+              <s:element maxOccurs="1" minOccurs="0" name="FareBasisName" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="SpecialFareBasisName" type="s:string"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetCloseProduct">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="oracleSession" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="pkgsn" nillable="true" type="s:decimal"/>
+            <s:element maxOccurs="1" minOccurs="1" name="obFlsn" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="obRoutesn" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ibFlsn" nillable="true" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ibRoutesn" nillable="true" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="tourOperatorSn" nillable="true" type="s:decimal"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCloseProductResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetCloseProductResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeptPaths">
+        <s:complexType/>
+      </s:element>
+      <s:complexType name="Paths">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="deptCode" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="arrvCode" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="deptPathName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="arrvPathName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="deptPathId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="uid" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="itemId" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPaths">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="Paths" nillable="true" type="tns:Paths"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDeptPathsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetDeptPathsResult" type="tns:ArrayOfPaths"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArrvPaths">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetArrvPathsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetArrvPathsResult" type="tns:ArrayOfPaths"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocations">
+        <s:complexType/>
+      </s:element>
+      <s:complexType name="Locations">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="cityCode" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="stationCode" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="group" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLocations">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="Locations" nillable="true" type="tns:Locations"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLocationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetLocationsResult" type="tns:ArrayOfLocations"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    </Schemas>
+    <Procedure>
+        <Input>
+            <Parameter xmlns:ns2="http://tempuri.org/" elementName="ns2:GetLocations" elementType="ns2:GetLocations"/>
+        </Input>
+        <Output>
+            <Parameter xmlns:ns2="http://tempuri.org/" elementName="ns2:GetLocationsResponse" elementType="ns2:GetLocationsResponse"/>
+        </Output>
+    </Procedure>
+    <ProviderAttributes>
+        <item>
+            <name>endpointUrl</name>
+            <value>http://test.arkia.co.il/services/domesticflightsservice.asmx</value>
+        </item>
+        <item>
+            <name>bindingDescription</name>
+            <value></value>
+        </item>
+        <item>
+            <name>nsUri</name>
+            <value>http://tempuri.org/</value>
+        </item>
+        <item>
+            <name>soapAction</name>
+            <value>http://tempuri.org/GetLocations</value>
+        </item>
+        <item>
+            <name>soapVersion</name>
+            <value>SOAP v1.1</value>
+        </item>
+        <item>
+            <name>bindingName</name>
+            <value>DomesticFlightsServiceSoap</value>
+        </item>
+        <item>
+            <name>portName</name>
+            <value>DomesticFlightsServiceSoap</value>
+        </item>
+        <item>
+            <name>inputNS</name>
+            <value>xmlns:soapenc=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; xmlns:tm=&quot;http://microsoft.com/wsdl/mime/textMatching/&quot; xmlns:http=&quot;http://schemas.xmlsoap.org/wsdl/http/&quot; xmlns:tns=&quot;http://tempuri.org/&quot; xmlns:mime=&quot;http://schemas.xmlsoap.org/wsdl/mime/&quot; xmlns:soap12=&quot;http://schemas.xmlsoap.org/wsdl/soap12/&quot; </value>
+        </item>
+        <item>
+            <name>serviceName</name>
+            <value>DomesticFlightsService</value>
+        </item>
+    </ProviderAttributes>
+    <SystemParameters/>
+</ServiceDescription>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceDescription catalog="WSDL" id="GeneralService_GetOracleSession" adapter="soap" useNsPrefix="input">
+    <Name>GetOracleSession</Name>
+    <Description></Description>
+    <Schemas>
+        <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetOracleSession">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetOracleSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetOracleSessionResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    </Schemas>
+    <Procedure>
+        <Input>
+            <Parameter xmlns:ns2="http://tempuri.org/" elementName="ns2:GetOracleSession" elementType="ns2:GetOracleSession"/>
+        </Input>
+        <Output>
+            <Parameter xmlns:ns2="http://tempuri.org/" elementName="ns2:GetOracleSessionResponse" elementType="ns2:GetOracleSessionResponse"/>
+        </Output>
+    </Procedure>
+    <ProviderAttributes>
+        <item>
+            <name>bindingDescription</name>
+            <value></value>
+        </item>
+        <item>
+            <name>nsUri</name>
+            <value>http://tempuri.org/</value>
+        </item>
+        <item>
+            <name>endpointUrl</name>
+            <value>http://test.arkia-service.co.il/generalservice.asmx</value>
+        </item>
+        <item>
+            <name>portName</name>
+            <value>GeneralServiceSoap</value>
+        </item>
+        <item>
+            <name>soapAction</name>
+            <value>http://tempuri.org/GetOracleSession</value>
+        </item>
+        <item>
+            <name>inputNS</name>
+            <value>xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" </value>
+        </item>
+        <item>
+            <name>serviceName</name>
+            <value>GeneralService</value>
+        </item>
+        <item>
+            <name>bindingName</name>
+            <value>GeneralServiceSoap</value>
+        </item>
+        <item>
+            <name>soapVersion</name>
+            <value>SOAP v1.1</value>
+        </item>
+    </ProviderAttributes>
+    <SystemParameters/>
+</ServiceDescription>
